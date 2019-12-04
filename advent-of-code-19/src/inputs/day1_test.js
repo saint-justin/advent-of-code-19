@@ -1,4 +1,4 @@
-const day1 = `100756`;
+const input = `100756`;
 
 
-export default day1;
+export default input;

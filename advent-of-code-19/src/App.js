@@ -3,7 +3,7 @@ import './App.css';
 
 // Import the neccesary input files - Uncomment whichever one is needed
 // import input from `./inputs/day${dayNumber}.js`
-// import input from "./inputs/day2.js";
+import input from "./inputs/day3_test.js";
 
 
 function App() {
@@ -84,6 +84,46 @@ function App() {
     console.log("FAILED")
   }
 
+  // Fxn for day three
+  const day3 = (_input) => {
+    const gridSize = 5000;
+    const startPos = [2500, 2500]
+    const grid = [];
+
+    // Make a gridSize x gridSize 2d arr
+    for(let i=0; i<gridSize; i++){
+      let newRow = [];
+      for(let j=0; j<gridSize; j++){
+        newRow.push(0);
+      }
+      grid.push(newRow);
+    }
+
+    // Split the commands into those for each individual wire
+    let commands = _input.split(/\r?\n/);
+    let wireOneCommands = commands[0].split(',');
+    let wireTwoCommands = commands[1].split(',');
+
+    const interpretWireCommand = (_command, _grid, _startPos) => {
+      amount = parseInt(_command.slice(1))
+      switch(_command.charAt(0)){
+        case "U":
+          // for(let i=startPos[1]; i<parseInt
+          break;
+        case "D":
+          break;
+        case "L":
+          break;
+        case "R":
+          break;
+        default:
+          console.log("INVALID COMMAND")
+      }
+    }
+
+  }
+
+  // Fxn for day four
   const day4 = () => {
     const inputMin = 246540;
     const inputMax = 787419;
@@ -140,7 +180,7 @@ function App() {
   return (
     <div className="App">
       <h2>Hello World!</h2>
-      {day4()}
+      {day3(input)}
     </div>
   );
 }

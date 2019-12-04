@@ -1,4 +1,4 @@
-const day1 = `50572
+const input = `50572
 126330
 143503
 136703
@@ -100,4 +100,4 @@ const day1 = `50572
 98599`;
 
 
-export default day1;
+export default input;
