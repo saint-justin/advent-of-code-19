@@ -3,7 +3,7 @@ import './App.css';
 
 // Import the neccesary input files - Uncomment whichever one is needed
 // import input from `./inputs/day${dayNumber}.js`
-import input from "./inputs/day2.js";
+// import input from "./inputs/day2.js";
 
 
 function App() {
@@ -84,11 +84,63 @@ function App() {
     console.log("FAILED")
   }
 
+  const day4 = () => {
+    const inputMin = 246540;
+    const inputMax = 787419;
+
+
+    const runChecks = (input) => {
+      let strng = input.toString().split("");
+
+      // Check for value errors
+      for(let i=0; i<strng.length-1; i++){
+        if(parseInt(strng[i]) > parseInt(strng[i+1]))
+          return false;
+      }
+
+      // Check through all characters for two in a row
+      let tempYes = false;
+      for(let i=0; i<strng.length-1; i++){
+        if (strng[i] === strng[i+1]){
+          if (strng[i] === strng[i+2]){
+
+            // If a triple is found, pull out all of that character and move on -- NOTE- Not a perfect method (111011 would not be recognized as real when it should be) but gets the job done for my set
+            let illegalChar = strng[i];
+            let newString = strng.join("");
+            while(newString.includes(illegalChar)){
+              newString = newString.replace(illegalChar, "");
+            }
+            console.log(`Old String: ${strng.join("")} New String: ${newString}`)
+            if (runChecks(newString))
+              return true;
+            else 
+              return false;
+          }
+          else
+            return true;
+        }
+      }
+
+
+      // Found no matches
+      return false;
+    }
+
+    let counter = 0;
+    for(let i=inputMin; i<inputMax; i++){
+      if (runChecks(i))
+        counter++;
+    }
+
+    console.log("Amount found: " + counter);
+  return <>{counter}</>
+  }
+
 
   return (
     <div className="App">
       <h2>Hello World!</h2>
-      {day2(input)}
+      {day4()}
     </div>
   );
 }
